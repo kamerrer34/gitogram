@@ -1,0 +1,36 @@
+.header {
+    padding: 45px 0;
+    border-bottom: 1px solid #D3D3D3;
+    background: #FAFAFA;
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__right {
+        display: flex;
+        align-items: center;
+    }
+
+    &__home {
+        width: 24px;
+        margin-right: 28px;
+    }
+
+    &__user {
+        width: 37px;
+        margin-right: 24px;
+    }
+
+    &__out {
+        width: 25px;
+    }
+
+    &__users {
+        display: flex;
+        justify-content: space-between;
+        background: #FAFAFA;
+    }
+}

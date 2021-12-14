@@ -1,0 +1,18 @@
+.repository {
+    margin-bottom: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.07);
+
+    &__ttl {
+        margin-bottom: 12px;
+        font-size: 26px;
+        line-height: 28px;
+        font-weight: bold;
+    }
+
+    &__text {
+        margin-bottom: 100px;
+        font-size: 16px;
+        line-height: 26px;
+    }
+}

@@ -1,0 +1,34 @@
+.progress {
+    padding: 8px 8px 0;
+
+    &.animate {
+        .progress__bar {
+            animation: progress 5s linear;
+        }
+    }
+
+    &__inner {
+        position: relative;
+        height: 2px;
+        border-radius: 1px;
+        background: rgba(49, 174, 84, 0.3);
+    }
+
+    &__bar {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        border-radius: 1px;
+        background: #31AE54;
+    }
+}
+
+@keyframes progress {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}

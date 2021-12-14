@@ -1,0 +1,25 @@
+<div class="slide" :class="{active: active}">
+    <Progress :class="{animate: active}"></Progress>
+    <div class="slide__top">
+        <div class="slide__img">
+            <img :src="data.avatar" alt="">
+        </div>
+        <div class="slide__ttl">{{ data.name }}</div>
+    </div>
+    <div class="slide__body">
+        <template v-if="!data.text">
+            <Skeleton :type="'big'" class="slide__skeleton-big"></Skeleton>
+            <Skeleton :type="'three'" class="slide__skeleton-tree"></Skeleton>
+            <Skeleton :type="'three'" class="slide__skeleton-tree"></Skeleton>
+        </template>
+        <div v-if="data.text" v-html="data.text"></div>
+    </div>
+    <div class="slide__bottom">
+        <a class="g-button" href="#">Follow</a>
+    </div>
+    <Spinner v-if="loading && active"></Spinner>
+    <template v-if="!loading && active">
+        <SliderBtn class="prev" v-if="btnPrev" @click="$emit('onPrevSlide')"></SliderBtn>
+        <SliderBtn class="next" v-if="btnNext" @click="$emit('onNextSlide')"></SliderBtn>
+    </template>
+</div>

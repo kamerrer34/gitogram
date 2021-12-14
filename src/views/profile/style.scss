@@ -1,0 +1,49 @@
+.profile-page {
+    position: relative;
+
+    .header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+}
+
+.profile {
+    &__inner {
+        display: flex;
+    }
+
+    &__side {
+        width: 32%;
+        padding-top: 168px;
+    }
+
+    &__body {
+        width: 68%;
+        min-height: 100vh;
+        padding-top: 168px;
+        padding-left: 74px;
+        border-left: 1px solid #D3D3D3;
+    }
+
+    &__top {
+        margin-bottom: 36px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__title {
+        font-weight: bold;
+        font-size: 26px;
+        line-height: 28px;
+    }
+
+    &__count {
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 28px;
+        color: #9E9E9E;
+    }
+}

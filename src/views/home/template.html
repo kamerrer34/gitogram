@@ -1,0 +1,14 @@
+<div class="home-page">
+    <Header>
+        <template #users>
+            <User v-for="trend in trends"
+                  :key="trend.id"
+                  :data="getUserData(trend)"
+                  @click="$router.push({name: 'Stories', params: {slide: trend.id}})"
+            ></User>
+        </template>
+    </Header>
+    <div class="home-page__container g-container">
+        4575475
+    </div>
+</div>

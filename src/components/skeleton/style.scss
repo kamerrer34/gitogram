@@ -1,0 +1,29 @@
+.skeleton {
+    &__big {
+        height: 170px;
+        border-radius: 4px;
+        background: #DEDEDE;
+    }
+
+    &__line {
+        height: 18px;
+        border-radius: 4px;
+        background: #DEDEDE;
+
+        &:not(:first-child) {
+            margin-top: 10px;
+        }
+
+        &.line-1 {
+            width: 65%;
+        }
+
+        &.line-2 {
+            width: 81%;
+        }
+
+        &.line-3 {
+            width: 51%;
+        }
+    }
+}
