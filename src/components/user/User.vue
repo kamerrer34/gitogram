@@ -3,7 +3,7 @@
 <script>
 export default {
   name: "User",
-  props: ['data'],
+  props: ['data']
 }
 </script>
 

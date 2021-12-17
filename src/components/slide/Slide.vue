@@ -15,7 +15,7 @@ export default {
     SliderBtn,
     Skeleton,
     Progress,
-  },
+  }
 }
 </script>
 

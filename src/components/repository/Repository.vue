@@ -2,7 +2,8 @@
 
 <script>
 export default {
-  name: "Repository"
+  name: "Repository",
+  props: ['data'],
 }
 </script>
 

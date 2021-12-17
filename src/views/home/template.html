@@ -9,6 +9,9 @@
         </template>
     </Header>
     <div class="home-page__container g-container">
-        4575475
+        <Repository v-for="repo in starred"
+                    :key="repo.id"
+                    :data="getRepoData(repo)"
+        ></Repository>
     </div>
 </div>

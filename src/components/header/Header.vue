@@ -2,11 +2,21 @@
 
 <script>
 import Logo from "../logo/Logo";
+import Spinner from "../spinner/Spinner";
 
 export default {
   name: "Header",
   components: {
-    Logo
+    Logo,
+    Spinner
+  },
+  data() {
+    return {
+      avatar: null,
+    }
+  },
+  created() {
+    this.avatar = localStorage.getItem('avatar');
   }
 }
 </script>

@@ -1,2 +1,6 @@
 export * as trends from './trends'
 export * as readme from './readme'
+export * as auth from './auth'
+export * as code from './code'
+export * as starred from './starred'
+export * as repos from './repos'

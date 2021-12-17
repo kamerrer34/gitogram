@@ -20,8 +20,13 @@
     }
 
     &__user {
-        width: 37px;
+        position: relative;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        overflow: hidden;
         margin-right: 24px;
+        background: #9E9E9E;
     }
 
     &__out {

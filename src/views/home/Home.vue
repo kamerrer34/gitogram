@@ -3,6 +3,7 @@
 <script>
 import Header from "../../components/header/Header";
 import User from "../../components/user/User";
+import Repository from "../../components/repository/Repository";
 
 import { mapState, mapActions } from "vuex"
 
@@ -11,15 +12,18 @@ export default {
   components: {
     Header,
     User,
+    Repository
   },
   computed: {
     ...mapState({
-      trends: state => state.trends.data
+      trends: state => state.trends.data,
+      starred: state => state.starred.data,
     }),
   },
   methods: {
     ...mapActions({
       fetchTrends: 'trends/fetchTrends',
+      fetchStarred: 'starred/fetchStarred'
     }),
     getUserData(obj) {
       return {
@@ -27,10 +31,29 @@ export default {
         avatar: obj.owner?.avatar_url,
         name: obj.owner?.login,
       }
+    },
+    getRepoData(obj) {
+      return {
+        id: obj.id,
+        name: obj.name,
+        description: obj.description,
+        stargazers_count: obj.stargazers_count,
+        forks_count: obj.forks_count,
+        html_url: obj.html_url,
+        owner_name: obj.owner?.login,
+        owner_avatar: obj.owner?.avatar_url,
+        date: this.getFormatDate(obj.updated_at),
+      }
+    },
+    getFormatDate(val) {
+      const date = new Date(val);
+      const dateArr = date.toString().split(' ');
+      return dateArr[2] + ' ' + dateArr[1];
     }
   },
   async created() {
     await this.fetchTrends();
+    await this.fetchStarred();
   }
 }
 </script>
