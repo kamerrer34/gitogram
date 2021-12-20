@@ -36,6 +36,9 @@ const router = createRouter({
 router.beforeEach(async (to, from, next) => {
   const loginRoute = to.name === 'Login';
   if (loginRoute) {
+    if (localStorage.getItem('token')) {
+      next({name: 'Home'});
+    }
     next();
     return;
   }

@@ -39,7 +39,7 @@
         </div>
     </div>
 
-    <div class="repository__issues">
+    <div class="repository__issues" v-if="data.issues">
         <div class="repository__toggle"
              :class="{active: data.active}"
              @click="$emit('toggleIssues')">
