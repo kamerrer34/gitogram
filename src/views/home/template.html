@@ -12,6 +12,7 @@
         <Repository v-for="repo in starred"
                     :key="repo.id"
                     :data="getRepoData(repo)"
+                    @toggleIssues="toggleIssues(repo.id, repo.owner.login, repo.name, repo.issues)"
         ></Repository>
     </div>
 </div>

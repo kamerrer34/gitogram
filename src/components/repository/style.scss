@@ -30,6 +30,59 @@
         color: rgba(0, 0, 0, 0.4);
     }
 
+    &__skeleton {
+        margin-top: 10px;
+    }
+
+    &__issues {
+        margin-top: 18px;
+    }
+
+    &__issue {
+        display: flex;
+
+        &:not(:first-child) {
+            margin-top: 6px;
+            font-size: 14px;
+            line-height: 22px;
+        }
+    }
+
+    &__issue-name {
+        margin-right: 8px;
+        font-weight: bold;
+    }
+
+    &__toggle {
+        position: relative;
+        display: inline-block;
+        padding-right: 15px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 1.6;
+        cursor: pointer;
+
+        &:before {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            width: 10px;
+            height: 6px;
+            background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.79959 5.26034C9.51774 5.56387 9.04319 5.58144 8.73966 5.29959L5 1.77348L1.26033 5.29959C0.956802 5.58144 0.482254 5.56387 0.200401 5.26034C-0.0814505 4.9568 -0.0638747 4.48225 0.239658 4.2004L4.48966 0.200402C4.77742 -0.0668046 5.22257 -0.0668046 5.51033 0.200402L9.76034 4.2004C10.0639 4.48225 10.0814 4.9568 9.79959 5.26034Z' fill='%23212121'/%3E%3C/svg%3E%0A");
+            background-size: 10px;
+            content: '';
+            transform: scale(-1);
+        }
+
+        &.active {
+            &:before {
+                transform: scale(1);
+            }
+        }
+    }
+
     &__block {
         padding: 32px;
         border: 1px solid #F1F1F1;

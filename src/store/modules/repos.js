@@ -4,7 +4,7 @@ export default {
     namespaced: true,
     state: {
         repos: {
-            data: null
+            data: []
         }
     },
     mutations: {

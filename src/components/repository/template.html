@@ -7,6 +7,7 @@
             {{ data.owner_name }}
         </div>
     </div>
+
     <div class="repository__block">
         <a class="repository__ttl" :href="data.html_url" target="_blank">
             {{ data.name }}
@@ -37,6 +38,32 @@
             </div>
         </div>
     </div>
+
+    <div class="repository__issues">
+        <div class="repository__toggle"
+             :class="{active: data.active}"
+             @click="$emit('toggleIssues')">
+            <template v-if="!data.active">View issues</template>
+            <template v-if="data.active">Hide issues</template>
+        </div>
+        <Skeleton v-if="!data.issues.length && data.active"
+                  :type="'repo'"
+                  class="repository__skeleton"
+        ></Skeleton>
+        <template v-if="data.issues.length && data.active">
+            <div class="repository__issue"
+                 v-for="issue in data.issues"
+                 :key="issue.id">
+                <div class="repository__issue-name">
+                    {{ issue.user.login }}
+                </div>
+                <div class="repository__issue-text">
+                    {{ issue.title }}
+                </div>
+            </div>
+        </template>
+    </div>
+
     <div class="repository__date" v-if="data.date">
         {{ data.date }}
     </div>
