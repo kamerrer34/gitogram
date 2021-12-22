@@ -8,13 +8,34 @@ import Progress from "../progress/Progress";
 
 export default {
   name: "Slide",
-  props: ['active', 'loading', 'btnPrev', 'btnNext', 'data'],
-  emits: ['onPrevSlide', 'onNextSlide', 'onProgressFinish'],
+  props: ['active', 'last', 'loading', 'btnPrev', 'btnNext', 'data'],
+  emits: ['onPrevSlide', 'onNextSlide', 'onProgressFinish', 'onFollow'],
   components: {
     Spinner,
     SliderBtn,
     Skeleton,
     Progress,
+  },
+  methods: {
+    progress() {
+      setTimeout(() => {
+        if (this.active && !this.last) {
+          //this.$emit('onProgressFinish');
+        }
+      }, 5000);
+    }
+  },
+  watch: {
+    active(curVal) {
+      if (curVal) {
+        this.progress();
+      }
+    }
+  },
+  created() {
+    if (this.active) {
+      this.progress();
+    }
   }
 }
 </script>

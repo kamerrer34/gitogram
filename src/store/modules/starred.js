@@ -49,7 +49,7 @@ export default {
                 return;
             }
             try {
-                const { data } = await api.issues.getIssues({ owner, repo });
+                const { data } = await api.repos.getIssues({ owner, repo });
                 commit('SET_ISSUES', { id, content: data });
             } catch (err) {
                 console.log(err);

@@ -15,7 +15,15 @@
         <div v-if="data.text" v-html="data.text"></div>
     </div>
     <div class="slide__bottom">
-        <a class="g-button" href="#">Follow</a>
+        <button class="slide__btn g-button" :class="{load: data.follow_load}" @click="$emit('onFollow')">
+            <Spinner v-if="data.follow_load" class="small"></Spinner>
+            <template v-if="!data.follow_load && !data.follow">
+                Follow
+            </template>
+            <template v-if="!data.follow_load && data.follow">
+                Unfollow
+            </template>
+        </button>
     </div>
     <Spinner v-if="loading && active"></Spinner>
     <template v-if="!loading && active">

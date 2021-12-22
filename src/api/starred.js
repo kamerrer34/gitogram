@@ -2,7 +2,17 @@ import { makeRequest } from './requests'
 
 export const getStarred = () => {
     return makeRequest({
-        url: 'https://api.github.com/user/starred',
+        url: '/user/starred',
+        headers: {
+            Authorization: `token ${localStorage.getItem('token')}`
+        }
+    })
+}
+
+export const follow = ({ owner, repo, method }) => {
+    return makeRequest({
+        url: `/user/starred/${owner}/${repo}`,
+        method: method,
         headers: {
             Authorization: `token ${localStorage.getItem('token')}`
         }

@@ -13,12 +13,14 @@
                    :key="trend.id"
                    :data="getStoryData(trend)"
                    :active="slideNdx === ndx"
+                   :last="slideNdx === trends.length - 1"
                    :loading="loading"
                    :btnPrev="slideNdx !== 0"
                    :btnNext="slideNdx !== trends.length - 1"
                    @onNextSlide="handleSlide(ndx + 1)"
                    @onPrevSlide="handleSlide(ndx - 1)"
                    @onProgressFinish="handleSlide(ndx + 1)"
+                   @onFollow="handleFollow(ndx)"
             ></Slide>
         </div>
     </div>

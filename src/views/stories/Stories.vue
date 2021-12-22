@@ -4,7 +4,7 @@
 import Logo from "../../components/logo/Logo";
 import Slide from "../../components/slide/Slide";
 
-import { mapState, mapActions } from "vuex"
+import { mapState, mapActions, mapMutations } from "vuex"
 
 export default {
   name: 'Stories',
@@ -21,13 +21,19 @@ export default {
   },
   computed: {
     ...mapState({
-      trends: state => state.trends.data
+      trends: state => state.trends.data,
+      starred: state => state.starred.data,
     }),
   },
   methods: {
     ...mapActions({
       fetchTrends: 'trends/fetchTrends',
-      fetchReadme: 'trends/fetchReadme'
+      fetchReadme: 'trends/fetchReadme',
+      fetchFollow: 'trends/fetchFollow',
+      fetchStarred: 'starred/fetchStarred',
+    }),
+    ...mapMutations({
+      setFollow: 'trends/SET_FOLLOW',
     }),
     async fetchReadmeSlide() {
       const {id, owner, name} = this.trends[this.slideNdx];
@@ -50,6 +56,8 @@ export default {
         avatar: obj.owner?.avatar_url,
         name: obj.owner?.login,
         text: obj.readme,
+        follow: obj.follow,
+        follow_load: obj.follow_load,
       }
     },
     moveSlider(ndx) {
@@ -62,12 +70,33 @@ export default {
     async handleSlide(ndx) {
       this.moveSlider(ndx);
       await this.loadReadme();
+    },
+    async handleFollow(ndx) {
+      const repo = this.trends[ndx];
+      const params = {
+        id: repo.id,
+        owner: repo.owner.login,
+        repo: repo.name,
+        method: repo.follow ? 'DELETE' : 'PUT'
+      };
+      await this.fetchFollow(params);
+    },
+    async defineFollow() {
+      this.trends.map(trendRepo => {
+        const star = this.starred.some(starredRepo => {
+          return trendRepo.id === starredRepo.id
+        });
+        if (star) {
+          this.setFollow({ id: trendRepo.id });
+        }
+      });
     }
   },
   async mounted() {
     await this.fetchTrends();
+    await this.fetchStarred();
     await this.loadReadme();
-
+    await this.defineFollow();
     const slideId = Number(this.$route.params.slide);
     if (slideId) {
       const ndx = this.trends.findIndex((item) => item.id === slideId);
