@@ -40,10 +40,13 @@
         font-size: 14px;
         line-height: 21px;
         letter-spacing: -0.3px;
+
+        &:not(:first-child) {
+            margin-left: 10px;
+        }
     }
 
     &__txt {
-        margin-right: 10px;
         font-weight: 500;
         color: #404040;
     }
@@ -51,5 +54,6 @@
     &__link {
         text-decoration: underline;
         color: #31AE54;
+        cursor: pointer;
     }
 }

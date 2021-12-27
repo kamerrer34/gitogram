@@ -44,7 +44,7 @@ router.beforeEach(async (to, from, next) => {
   }
 
   try {
-    const response = await api.auth.getUser();
+    const response = await api.user.getUser();
     if (response.data) {
       localStorage.setItem('login', response.data.login);
       localStorage.setItem('avatar', response.data.avatar_url);

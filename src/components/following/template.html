@@ -1,0 +1,23 @@
+<div class="following">
+    <div class="following__user">
+        <div class="following__img">
+            <img :src="data.avatar_url" alt="">
+        </div>
+        <div class="following__info">
+            <div class="following__name">{{ data.login }}</div>
+            <div class="following__type">{{ data.type }}</div>
+        </div>
+    </div>
+    <button class="following__btn g-button"
+            :class="{load: data.follow_load}"
+            @click="$emit('onFollow')"
+    >
+        <Spinner v-if="data.follow_load" class="small"></Spinner>
+        <template v-if="!data.follow_load && !data.follow">
+            Follow
+        </template>
+        <template v-if="!data.follow_load && data.follow">
+            Unfollow
+        </template>
+    </button>
+</div>

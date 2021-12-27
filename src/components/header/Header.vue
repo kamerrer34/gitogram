@@ -10,14 +10,14 @@ export default {
     Logo,
     Spinner
   },
-  methods: {
-    logout() {
-      localStorage.setItem('token', '');
-    }
-  },
   data() {
     return {
       avatar: null,
+    }
+  },
+  methods: {
+    logout() {
+      localStorage.setItem('token', '');
     }
   },
   created() {

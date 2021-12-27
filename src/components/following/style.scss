@@ -1,0 +1,41 @@
+.following {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__user {
+        display: flex;
+        align-items: center;
+    }
+
+    &__img {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 18px;
+    }
+
+    &__name {
+        margin-bottom: 6px;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    &__type {
+        font-size: 12px;
+        line-height: 16px;
+        color: #9E9E9E;
+    }
+
+    &__btn {
+        position: relative;
+        width: 115px;
+
+        &.load {
+            background: #9E9E9E;
+            pointer-events: none;
+        }
+    }
+}

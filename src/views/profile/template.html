@@ -4,19 +4,37 @@
         <div class="profile__inner g-container">
             <div class="profile__side">
                 <h2 class="profile__title">My profile</h2>
-                <ProfileInfo :data="user"></ProfileInfo>
+                <ProfileInfo :data="user"
+                             :following="following"
+                             @onFollowing="toggleFollowing()"></ProfileInfo>
             </div>
             <div class="profile__body">
-                <div class="profile__top">
-                    <h2 class="profile__title">Repositories</h2>
-                    <div class="profile__count">{{ user?.public_repos }}</div>
-                </div>
-                <div class="profile__list">
-                    <Repository v-for="repo in repos"
-                                :key="repo.id"
-                                :data="repo"
-                    ></Repository>
-                </div>
+                <template v-if="!followingShow">
+                    <div class="profile__top">
+                        <h2 class="profile__title">Repositories</h2>
+                        <div class="profile__count">{{ user?.public_repos }}</div>
+                    </div>
+                    <div class="profile__list">
+                        <Repository v-for="repo in repos"
+                                    :key="repo.id"
+                                    :data="repo"
+                        ></Repository>
+                    </div>
+                </template>
+
+                <template v-if="followingShow">
+                    <div class="profile__top">
+                        <h2 class="profile__title">Following</h2>
+                        <div class="profile__count">{{ user?.following }}</div>
+                    </div>
+                    <div class="profile__list">
+                        <Following v-for="item in following"
+                                   :key="item.id"
+                                   :data="item"
+                                   @onFollow="follow(item.id)"
+                        ></Following>
+                    </div>
+                </template>
             </div>
         </div>
     </div>

@@ -15,7 +15,7 @@ export default {
     actions: {
         async fetchUser({ commit }) {
             try {
-                const { data } = await api.auth.getUser();
+                const { data } = await api.user.getUser();
                 commit('SET_USER', data);
             } catch (err) {
                 console.log(err);

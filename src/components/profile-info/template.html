@@ -6,10 +6,12 @@
     <div class="profile-info__inner">
         <div class="profile-info__name">{{ data?.login }}</div>
         <div class="profile-info__row">
-            <div class="profile-info__count">54</div>
-            <div class="profile-info__txt">reposts</div>
-            <div class="profile-info__count">834</div>
-            <a class="profile-info__link" href="#">watchers</a>
+            <div class="profile-info__count">{{ data?.public_repos }}</div>
+            <div v-if="following" class="profile-info__link" @click="$emit('onFollowing')">repos</div>
+            <div v-if="!following" class="profile-info__txt">repos</div>
+            <div class="profile-info__count">{{ data?.following}}</div>
+            <div v-if="!following" class="profile-info__link" @click="$emit('onFollowing')">watchers</div>
+            <div v-if="following" class="profile-info__txt">watchers</div>
         </div>
         <div class="profile-info__capt">{{ data?.name }}</div>
     </div>

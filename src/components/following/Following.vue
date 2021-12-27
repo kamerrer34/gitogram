@@ -4,12 +4,12 @@
 import Spinner from "../spinner/Spinner";
 
 export default {
-  name: "ProfileInfo",
-  props: ['data', 'following'],
-  emits: ['onFollowing'],
+  name: "Following",
+  props: ['data'],
+  emits: ['onFollow'],
   components: {
     Spinner
-  },
+  }
 }
 </script>
 
