@@ -1,9 +1,14 @@
 <template src="./template.html"></template>
 
 <script>
+import Spinner from "../spinner/Spinner";
+
 export default {
   name: "User",
-  props: ['data']
+  props: ['data'],
+  components: {
+    Spinner
+  }
 }
 </script>
 

@@ -32,7 +32,7 @@ export default {
       }
     }
   },
-  created() {
+  mounted() {
     if (this.active) {
       this.progress();
     }

@@ -1,6 +1,7 @@
 <div class="user">
-    <div class="user__pic">
-        <img :src="data.avatar" alt="">
+    <div class="user__pic" :class="{load: !data?.avatar}">
+        <img v-if="data?.avatar" :src="data?.avatar" width="80" height="80" alt="avatar">
+        <Spinner v-else class="small"></Spinner>
     </div>
-    <div class="user__name">{{ data.name }}</div>
+    <div class="user__name">{{ data?.name }}</div>
 </div>

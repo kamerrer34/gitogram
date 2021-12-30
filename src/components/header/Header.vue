@@ -1,14 +1,17 @@
 <template src="./template.html"></template>
 
 <script>
-import Logo from "../logo/Logo";
 import Spinner from "../spinner/Spinner";
+import Icon from "../icon/Icon";
+import Logo from "../logo/Logo";
+
 
 export default {
   name: "Header",
   components: {
+    Spinner,
+    Icon,
     Logo,
-    Spinner
   },
   data() {
     return {
@@ -17,10 +20,10 @@ export default {
   },
   methods: {
     logout() {
-      localStorage.setItem('token', '');
+      localStorage.clear();
     }
   },
-  created() {
+  mounted() {
     this.avatar = localStorage.getItem('avatar');
   }
 }

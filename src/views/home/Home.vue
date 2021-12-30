@@ -31,24 +31,24 @@ export default {
     }),
     getUserData(obj) {
       return {
-        id: obj.id,
-        avatar: obj.owner?.avatar_url,
-        name: obj.owner?.login,
+        id: obj?.id,
+        avatar: obj?.owner?.avatar_url,
+        name: obj?.owner?.login,
       }
     },
     getRepoData(obj) {
       return {
-        id: obj.id,
-        name: obj.name,
-        description: obj.description,
-        stargazers_count: obj.stargazers_count,
-        forks_count: obj.forks_count,
-        html_url: obj.html_url,
-        owner_name: obj.owner?.login,
-        owner_avatar: obj.owner?.avatar_url,
-        date: this.getFormatDate(obj.updated_at),
-        issues: obj.issues || [],
-        active: obj.active,
+        id: obj?.id,
+        name: obj?.name,
+        description: obj?.description,
+        url: obj?.html_url,
+        stargazers: obj?.stargazers_count,
+        forks: obj?.forks_count,
+        issues: obj?.issues || [],
+        active: obj?.active,
+        login: obj?.owner?.login,
+        avatar: obj?.owner?.avatar_url,
+        date: this.getFormatDate(obj?.updated_at),
       }
     },
     getFormatDate(val) {
@@ -56,16 +56,16 @@ export default {
       const dateArr = date.toString().split(' ');
       return dateArr[2] + ' ' + dateArr[1];
     },
-    async toggleIssues(id, owner, repo, issues) {
+    toggleIssues(id, owner, repo, issues) {
       this.setActiveIssue(id);
       if (!issues) {
-        await this.fetchIssues({id, owner, repo});
+        this.fetchIssues({id, owner, repo});
       }
     },
   },
-  async created() {
-    await this.fetchTrends();
-    await this.fetchStarred();
+  mounted() {
+    this.fetchTrends();
+    this.fetchStarred();
   }
 }
 </script>

@@ -10,13 +10,17 @@ export const getStarred = () => {
 }
 
 export const follow = ({ owner, repo, method }) => {
+    let data = {};
+    if (method === 'PUT') {
+        data = {
+            owner: owner,
+            repo: repo,
+        }
+    }
     return makeRequest({
         url: `/user/starred/${owner}/${repo}`,
         method: method,
-        data: {
-            owner: owner,
-            repo: repo,
-        },
+        data: data,
         headers: {
             Authorization: `token ${localStorage.getItem('token')}`
         }

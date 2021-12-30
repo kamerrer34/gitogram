@@ -18,7 +18,7 @@ export default {
                 const { data } = await api.repos.getRepos();
                 commit('SET_REPOS', data);
             } catch (err) {
-                console.log(err);
+                console.error(err);
                 throw err;
             }
         }

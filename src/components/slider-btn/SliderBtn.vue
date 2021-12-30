@@ -1,8 +1,13 @@
 <template src="./template.html"></template>
 
 <script>
+import Icon from "../icon/Icon";
+
 export default {
-  name: "SliderBtn"
+  name: "SliderBtn",
+  components: {
+    Icon
+  }
 }
 </script>
 

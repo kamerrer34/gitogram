@@ -39,7 +39,7 @@ export default {
                 const { data } = await api.starred.getStarred();
                 commit('SET_STARRED', data);
             } catch (err) {
-                console.log(err);
+                console.error(err);
                 throw err;
             }
         },
@@ -52,7 +52,7 @@ export default {
                 const { data } = await api.repos.getIssues({ owner, repo });
                 commit('SET_ISSUES', { id, content: data });
             } catch (err) {
-                console.log(err);
+                console.error(err);
                 throw err;
             }
         }

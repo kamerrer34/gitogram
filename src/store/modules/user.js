@@ -18,7 +18,7 @@ export default {
                 const { data } = await api.user.getUser();
                 commit('SET_USER', data);
             } catch (err) {
-                console.log(err);
+                console.error(err);
                 throw err;
             }
         }

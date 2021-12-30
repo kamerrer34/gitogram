@@ -1,6 +1,11 @@
 .profile-info {
     margin-top: 30px;
     display: flex;
+    align-items: center;
+
+    &__inner {
+        width: 250px;
+    }
 
     &__pic {
         position: relative;

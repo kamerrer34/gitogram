@@ -1,8 +1,13 @@
 <template src="./template.html"></template>
 
 <script>
+import Icon from "../icon/Icon";
+
 export default {
-  name: "Logo"
+  name: "Logo",
+  components: {
+    Icon
+  }
 }
 </script>
 

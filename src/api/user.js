@@ -19,13 +19,16 @@ export const getFollowing = () => {
 }
 
 export const follow = ({ user, method }) => {
-    console.log(user, method);
+    let data = {};
+    if (method === 'PUT') {
+        data = {
+            username: user
+        }
+    }
     return makeRequest({
         url: `/user/following/${user}`,
         method: method,
-        data: {
-            username: user
-        },
+        data: data,
         headers: {
             Authorization: `token ${localStorage.getItem('token')}`
         }

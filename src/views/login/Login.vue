@@ -21,7 +21,7 @@ export default {
       window.location.href = `${ghApi}?${params}`;
     }
   },
-  async created() {
+  async mounted() {
     const code = new URLSearchParams(window.location.search).get('code');
     if (code) {
       try {
@@ -30,7 +30,7 @@ export default {
         localStorage.setItem('token', token);
         await this.$router.replace({name: 'Home'});
       } catch (err) {
-        console.log(err);
+        console.error(err);
         throw err;
       }
     }

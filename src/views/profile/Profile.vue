@@ -1,20 +1,23 @@
 <template src="./template.html"></template>
 
 <script>
-import Header from "../../components/header/Header";
+
 import ProfileInfo from "../../components/profile-info/ProfileInfo";
 import Repository from "../../components/repository/Repository";
 import Following from "../../components/following/Following";
+import Skeleton from "../../components/skeleton/Skeleton";
+import Header from "../../components/header/Header";
 
 import { mapState, mapActions } from "vuex"
 
 export default {
   name: 'Profile',
   components: {
-    Header,
     ProfileInfo,
     Repository,
     Following,
+    Skeleton,
+    Header,
   },
   data() {
     return {
@@ -35,13 +38,43 @@ export default {
       fetchFollowing: 'following/fetchFollowing',
       fetchFollow: 'following/fetchFollow',
     }),
-    async toggleFollowing() {
-      this.followingShow = !this.followingShow;
-      if (!this.following) {
-        await this.fetchFollowing();
+    getUserData(obj) {
+      return {
+        avatar: obj?.avatar_url,
+        name: obj?.name,
+        login: obj?.login,
+        repos: obj?.public_repos,
+        following: obj?.following,
       }
     },
-    async follow(id) {
+    getFollowingData(obj) {
+      return {
+        avatar: obj?.avatar_url,
+        login: obj?.login,
+        type: obj?.type,
+        follow: obj?.follow,
+        followLoad: obj?.followLoad,
+      }
+    },
+    getRepoData(obj) {
+      return {
+        id: obj?.id,
+        name: obj?.name,
+        description: obj?.description,
+        url: obj.html_url,
+        stargazers: obj.stargazers_count,
+        forks: obj.forks_count,
+        issues: obj.issues,
+        active: obj.active,
+      }
+    },
+    toggleFollowing() {
+      this.followingShow = !this.followingShow;
+      if (!this.following) {
+        this.fetchFollowing();
+      }
+    },
+    follow(id) {
       const ndx = this.following.findIndex((item) => item.id === id);
       const user = this.following[ndx];
       const params = {
@@ -49,10 +82,10 @@ export default {
         user: user.login,
         method: user.follow ? 'DELETE' : 'PUT'
       };
-      await this.fetchFollow(params);
+      this.fetchFollow(params);
     },
   },
-  async created() {
+  async mounted() {
     await this.fetchUser();
     await this.fetchRepos();
   }

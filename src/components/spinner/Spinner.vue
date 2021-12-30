@@ -1,8 +1,13 @@
 <template src="./template.html"></template>
 
 <script>
+import Icon from "../icon/Icon";
+
 export default {
-  name: "Spinner"
+  name: "Spinner",
+  components: {
+    Icon
+  }
 }
 </script>
 

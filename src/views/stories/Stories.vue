@@ -3,6 +3,7 @@
 <script>
 import Logo from "../../components/logo/Logo";
 import Slide from "../../components/slide/Slide";
+import Icon from "../../components/icon/Icon";
 
 import { mapState, mapActions, mapMutations } from "vuex"
 
@@ -10,7 +11,8 @@ export default {
   name: 'Stories',
   components: {
     Logo,
-    Slide
+    Slide,
+    Icon,
   },
   data() {
     return {
@@ -44,7 +46,7 @@ export default {
       try {
         await this.fetchReadmeSlide();
       } catch (err) {
-        console.log(err);
+        console.error(err);
         throw err;
       } finally {
         this.loading = false;
@@ -57,7 +59,7 @@ export default {
         name: obj.owner?.login,
         text: obj.readme,
         follow: obj.follow,
-        follow_load: obj.follow_load,
+        followLoad: obj.followLoad,
       }
     },
     moveSlider(ndx) {
@@ -82,6 +84,8 @@ export default {
       await this.fetchFollow(params);
     },
     async defineFollow() {
+      await this.fetchTrends();
+      await this.fetchStarred();
       this.trends.map(trendRepo => {
         const star = this.starred.some(starredRepo => {
           return trendRepo.id === starredRepo.id
@@ -93,10 +97,8 @@ export default {
     }
   },
   async mounted() {
-    await this.fetchTrends();
-    await this.fetchStarred();
-    await this.loadReadme();
     await this.defineFollow();
+    await this.loadReadme();
     const slideId = Number(this.$route.params.slide);
     if (slideId) {
       const ndx = this.trends.findIndex((item) => item.id === slideId);

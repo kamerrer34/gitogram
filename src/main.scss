@@ -15,15 +15,12 @@ body {
 svg, img {
     display: block;
     width: 100%;
+    height: auto;
 }
 
 a {
     text-decoration: none;
     color: inherit;
-}
-
-#app {
-
 }
 
 .g-container {
@@ -43,6 +40,11 @@ a {
     font-weight: bold;
     color: #fff;
     background: #31AE54;
+    transition: opacity 0.25s ease-out;
+
+    &:hover {
+        opacity: 0.9;
+    }
 
     &.git {
         padding: 0 24px;

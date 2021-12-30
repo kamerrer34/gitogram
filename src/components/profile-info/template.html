@@ -1,18 +1,21 @@
 <div class="profile-info">
     <div class="profile-info__pic">
-        <Spinner v-if="!data" class="small"></Spinner>
-        <img v-if="data" :src="data.avatar_url" alt="">
+        <img v-if="data?.avatar" :src="data?.avatar" width="90" height="90" alt="avatar">
+        <Spinner v-else class="small"></Spinner>
     </div>
     <div class="profile-info__inner">
-        <div class="profile-info__name">{{ data?.login }}</div>
-        <div class="profile-info__row">
-            <div class="profile-info__count">{{ data?.public_repos }}</div>
-            <div v-if="following" class="profile-info__link" @click="$emit('onFollowing')">repos</div>
-            <div v-if="!following" class="profile-info__txt">repos</div>
-            <div class="profile-info__count">{{ data?.following}}</div>
-            <div v-if="!following" class="profile-info__link" @click="$emit('onFollowing')">watchers</div>
-            <div v-if="following" class="profile-info__txt">watchers</div>
-        </div>
-        <div class="profile-info__capt">{{ data?.name }}</div>
+        <template v-if="data?.login">
+            <div class="profile-info__name">{{ data?.login }}</div>
+            <div class="profile-info__row">
+                <div class="profile-info__count">{{ data?.repos }}</div>
+                <div v-if="followingShow" class="profile-info__link" @click="$emit('onFollowing')">repos</div>
+                <div v-else class="profile-info__txt">repos</div>
+                <div class="profile-info__count">{{ data?.following}}</div>
+                <div v-if="followingShow" class="profile-info__txt">watchers</div>
+                <div v-else class="profile-info__link" @click="$emit('onFollowing')">watchers</div>
+            </div>
+            <div class="profile-info__capt">{{ data?.name }}</div>
+        </template>
+        <Skeleton v-else :type="'profile'"></Skeleton>
     </div>
 </div>

@@ -2,14 +2,16 @@
 
 <script>
 import Spinner from "../spinner/Spinner";
+import Skeleton from "../skeleton/Skeleton";
 
 export default {
   name: "ProfileInfo",
-  props: ['data', 'following'],
+  props: ['data', 'followingShow'],
   emits: ['onFollowing'],
   components: {
-    Spinner
-  },
+    Spinner,
+    Skeleton,
+  }
 }
 </script>
 

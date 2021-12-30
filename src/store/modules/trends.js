@@ -30,7 +30,7 @@ export default {
         SET_FOLLOW_LOAD: (state, payload) => {
             state.data = state.data.map(repo => {
                 if (payload.id === repo.id) {
-                    repo.follow_load = payload.load
+                    repo.followLoad = payload.load
                 }
                 return repo;
             })
@@ -47,7 +47,7 @@ export default {
                 const { data } = await api.trends.getTrends();
                 commit('SET_TRENDS', data.items);
             } catch (err) {
-                console.log(err);
+                console.error(err);
                 throw err;
             }
         },
@@ -60,7 +60,7 @@ export default {
                 const { data } = await api.repos.getReadme({ owner, repo });
                 commit('SET_README', { id, content: data });
             } catch (err) {
-                console.log(err);
+                console.error(err);
                 throw err;
             }
         },
@@ -70,7 +70,7 @@ export default {
                 await api.starred.follow({ owner, repo, method });
                 commit('SET_FOLLOW', { id });
             } catch (err) {
-                console.log(err);
+                console.error(err);
                 throw err;
             } finally {
                 commit('SET_FOLLOW_LOAD', { id, load: false });
