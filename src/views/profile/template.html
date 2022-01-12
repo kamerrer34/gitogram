@@ -17,7 +17,7 @@
                         <div class="profile__count">{{ user?.following }}</div>
                     </div>
                     <div class="profile__list">
-                        <template v-if="!following">
+                        <template v-if="followingLoad">
                             <Skeleton v-for="n in user?.following" :type="'big'" class="skeleton__repo"></Skeleton>
                         </template>
                         <Following v-for="item in following"

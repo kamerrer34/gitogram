@@ -4,7 +4,8 @@ export default {
     namespaced: true,
     state: {
         following: {
-            data: []
+            data: [],
+            load: false
         }
     },
     mutations: {
@@ -22,6 +23,9 @@ export default {
                 return following;
             })
         },
+        SET_FOLLOWING_LOAD: (state, payload) => {
+            state.load = payload.load;
+        },
         SET_FOLLOW_LOAD: (state, payload) => {
             state.data = state.data.map(following => {
                 if (payload.id === following.id) {
@@ -33,12 +37,16 @@ export default {
     },
     actions: {
         async fetchFollowing({ commit }) {
+            commit('SET_FOLLOWING_LOAD', { load: true });
             try {
                 const { data } = await api.user.getFollowing();
                 commit('SET_FOLLOWING', data);
+                commit('SET_FOLLOWING_LOAD', { load: false });
             } catch (err) {
                 console.error(err);
                 throw err;
+            } finally {
+                commit('SET_FOLLOWING_LOAD', { load: false });
             }
         },
         async fetchFollow({ commit },{ id, user, method }) {
@@ -46,6 +54,7 @@ export default {
             try {
                 await api.user.follow({ user, method });
                 commit('SET_FOLLOW', { id });
+                commit('SET_FOLLOW_LOAD', { id, load: false });
             } catch (err) {
                 console.error(err);
                 throw err;

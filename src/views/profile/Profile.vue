@@ -30,6 +30,7 @@ export default {
       repos: state => state.repos.data,
       reposLoad: state => state.repos.load,
       following: state => state.following.data,
+      followingLoad: state => state.following.load,
     }),
   },
   methods: {
