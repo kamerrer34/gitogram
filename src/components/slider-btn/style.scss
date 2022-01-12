@@ -1,3 +1,5 @@
+@import '@/assets/scss/vars';
+
 .slider-btn {
     position: absolute;
     top: 50%;
@@ -10,11 +12,19 @@
 
     &.prev {
         left: -50px;
+
+        @media (max-width: $mobile) {
+            left: -20px;
+        }
     }
 
     &.next {
         right: -50px;
         transform: rotate(180deg);
+
+        @media (max-width: $mobile) {
+            right: -20px;
+        }
     }
 
     svg {
@@ -23,7 +33,7 @@
 
     &:hover {
         svg {
-            fill: #31AE54;
+            fill: $green;
         }
     }
 }

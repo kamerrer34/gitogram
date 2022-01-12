@@ -20,7 +20,7 @@ export default {
     progress() {
       setTimeout(() => {
         if (this.active && !this.last) {
-          this.$emit('onProgressFinish');
+          //this.$emit('onProgressFinish');
         }
       }, 5000);
     }

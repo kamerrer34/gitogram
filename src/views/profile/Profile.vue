@@ -61,11 +61,11 @@ export default {
         id: obj?.id,
         name: obj?.name,
         description: obj?.description,
-        url: obj.html_url,
-        stargazers: obj.stargazers_count,
-        forks: obj.forks_count,
-        issues: obj.issues,
-        active: obj.active,
+        url: obj?.html_url,
+        stargazers: obj?.stargazers_count,
+        forks: obj?.forks_count,
+        issues: obj?.issues,
+        active: obj?.active,
       }
     },
     toggleFollowing() {

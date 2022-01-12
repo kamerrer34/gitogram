@@ -1,8 +1,18 @@
+@import '@/assets/scss/vars';
+
 .login-page {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: flex-end;
     text-align: center;
+
+    @media (max-width: $tab) {
+        padding-top: 150px;
+    }
+
+    @media (max-width: $mobile) {
+        padding-top: 50px;
+    }
 
     &__inner,
     .g-button,
@@ -10,8 +20,26 @@
         margin: 0 auto;
     }
 
+    .logo {
+        @media (max-width: $mobile) {
+            width: 200px;
+        }
+    }
+
     .g-button {
         width: 252px;
+    }
+
+    &__inner {
+        @media (max-width: $tab) {
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+
+        @media (max-width: $mobile) {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
     }
 
     &__text {
@@ -26,10 +54,20 @@
         font-size: 16px;
         line-height: 19px;
         color: rgba(0, 0, 0, 0.4);
+
+        @media (max-width: $tab) {
+           display: none;
+        }
     }
 
     &__img {
-        width: 800px;
+        width: 100%;
+        max-width: 800px;
         margin: 90px auto 0;
+
+        @media (max-width: $mobile) {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
     }
 }

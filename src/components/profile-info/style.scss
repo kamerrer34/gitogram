@@ -1,10 +1,25 @@
+@import '@/assets/scss/vars';
+
 .profile-info {
     margin-top: 30px;
     display: flex;
     align-items: center;
 
     &__inner {
+        position: relative;
         width: 250px;
+
+        @media (max-width: $laptop) {
+            width: 200px;
+        }
+
+        @media (max-width: $tab) {
+            width: 250px;
+        }
+
+        @media (max-width: $mobile) {
+            width: 220px;
+        }
     }
 
     &__pic {
@@ -15,6 +30,12 @@
         border-radius: 50%;
         overflow: hidden;
         background: #9E9E9E;
+
+        @media (max-width: $mobile) {
+            width: 62px;
+            height: 62px;
+            margin-right: 14px;
+        }
     }
 
     &__name {
@@ -22,6 +43,12 @@
         font-weight: bold;
         font-size: 24px;
         line-height: 29px;
+
+        @media (max-width: $mobile) {
+            margin-bottom: 4px;
+            font-size: 18px;
+            line-height: 22px;
+        }
     }
 
     &__capt {
@@ -29,6 +56,11 @@
         font-size: 14px;
         line-height: 17px;
         color: #9E9E9E;
+
+        @media (max-width: $mobile) {
+            margin-top: 4px;
+            font-size: 12px;
+        }
     }
 
     &__row {
@@ -58,7 +90,7 @@
 
     &__link {
         text-decoration: underline;
-        color: #31AE54;
+        color: $green;
         cursor: pointer;
     }
 }

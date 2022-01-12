@@ -1,7 +1,24 @@
+@import '@/assets/scss/vars';
+
 .user {
+    display: inline-block;
+    vertical-align: top;
     width: 92px;
     text-align: center;
     cursor: pointer;
+
+    @media (max-width: $laptop) {
+        margin-right: 30px;
+    }
+
+    @media (max-width: $tab) {
+        margin-right: 12px;
+    }
+
+    @media (max-width: $mobile) {
+        margin-right: 10px;
+        width: 72px;
+    }
 
     &__pic {
         position: relative;
@@ -10,6 +27,11 @@
         border: 2px solid #A6328D;
         border-radius: 50%;
         overflow: hidden;
+
+        @media (max-width: $mobile) {
+            width: 72px;
+            height: 72px;
+        }
 
         &.load {
             background: #9E9E9E;

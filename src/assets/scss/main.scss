@@ -1,3 +1,5 @@
+@import '@/assets/scss/vars';
+
 *, *:after, *:before {
     box-sizing: border-box;
 }
@@ -26,6 +28,17 @@ a {
 .g-container {
     max-width: 1200px;
     margin: 0 auto;
+
+    @media (max-width: $laptop) {
+        max-width: none;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    @media (max-width: $mobile) {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
 
 .g-button {
@@ -39,7 +52,7 @@ a {
     font-size: 16px;
     font-weight: bold;
     color: #fff;
-    background: #31AE54;
+    background: $green;
     transition: opacity 0.25s ease-out;
 
     &:hover {

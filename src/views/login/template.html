@@ -5,7 +5,12 @@
             More than just one repository. <br>This is our digital world.
         </div>
         <button class="g-button git" @click="getCode()">Authorize with github</button>
-        <img class="login-page__img" src="@/assets/img/macbook.png" alt="">
+        <picture>
+            <source srcset="@/assets/img/iphone.png" media="(max-width: 460px)">
+            <source srcset="@/assets/img/ipad.png" media="(max-width: 1024px)">
+            <img class="login-page__img" src="@/assets/img/macbook.png" alt="">
+        </picture>
+
         <div class="login-page__copy">
             &copy; Gitogram from Loftschool
         </div>

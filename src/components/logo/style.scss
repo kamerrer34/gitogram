@@ -1,3 +1,10 @@
+@import '@/assets/scss/vars';
+
 .logo {
+    display: block;
     width: 174px;
+
+    @media (max-width: $mobile) {
+        width: 100px;
+    }
 }

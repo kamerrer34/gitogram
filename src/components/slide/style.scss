@@ -1,3 +1,5 @@
+@import '@/assets/scss/vars';
+
 .slide {
     position: relative;
     width: 375px;
@@ -6,6 +8,11 @@
     background: #fff;
     transform: scale(0.8);
     transition: transform 0.25s ease-out;
+
+    @media (max-width: $mobile) {
+        width: 280px;
+        height: 450px;
+    }
 
     &.active {
         z-index: 5;
@@ -42,6 +49,10 @@
         height: 500px;
         overflow: auto;
         padding: 18px;
+
+        @media (max-width: $mobile) {
+            height: 290px;
+        }
     }
 
     &__skeleton-big {

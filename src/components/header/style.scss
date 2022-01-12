@@ -1,7 +1,14 @@
+@import '@/assets/scss/vars';
+
 .header {
     padding: 45px 0;
     border-bottom: 1px solid #D3D3D3;
     background: #FAFAFA;
+
+    @media (max-width: $tab) {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
 
     &__top {
         display: flex;
@@ -17,6 +24,11 @@
     &__home {
         width: 24px;
         margin-right: 28px;
+
+        @media (max-width: $mobile) {
+            width: 18px;
+            margin-right: 14px;
+        }
     }
 
     &__user {
@@ -27,15 +39,19 @@
         overflow: hidden;
         margin-right: 24px;
         background: #9E9E9E;
+
+        @media (max-width: $mobile) {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
     }
 
     &__out {
         width: 25px;
-    }
 
-    &__users {
-        display: flex;
-        justify-content: space-between;
-        background: #FAFAFA;
+        @media (max-width: $mobile) {
+            width: 20px;
+        }
     }
 }

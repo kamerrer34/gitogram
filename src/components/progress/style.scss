@@ -1,3 +1,5 @@
+@import '@/assets/scss/vars';
+
 .progress {
     padding: 8px 8px 0;
 
@@ -20,7 +22,7 @@
         top: 0;
         height: 100%;
         border-radius: 1px;
-        background: #31AE54;
+        background: $green;
     }
 }
 

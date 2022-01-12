@@ -1,3 +1,5 @@
+@import '@/assets/scss/vars';
+
 .stories-page {
     position: relative;
     height: 100vh;
@@ -8,10 +10,18 @@
         display: flex;
         justify-content: space-between;
         padding-top: 48px;
+
+        @media (max-width: $tab) {
+            padding-top: 32px;
+        }
     }
 
-    &__cros {
+    &__cross {
         width: 22px;
+
+        @media (max-width: $mobile) {
+            width: 16px;
+        }
     }
     
     &__body {
@@ -26,6 +36,15 @@
         display: flex;
         margin-left: -188px;
         transition: transform 0.25s ease-out;
+
+        @media (max-width: $tab) {
+            top: 15%;
+        }
+
+        @media (max-width: $mobile) {
+            top: 5%;
+            margin-left: -140px;
+        }
     }
 
     .logo {
