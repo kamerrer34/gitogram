@@ -1,12 +1,13 @@
 <div class="home-page">
     <Header>
         <template #users>
-            <template v-if="!trends">
-                <User v-for="n in 10"></User>
+            <template v-if="trendsLoad">
+                <User v-for="n in 10" :trendsLoad="trendsLoad"></User>
             </template>
             <User v-for="trend in trends"
                   :key="trend.id"
                   :data="getUserData(trend)"
+                  :trendsLoad="trendsLoad"
                   @click="$router.push({name: 'Stories', params: {slide: trend.id}})"
             ></User>
         </template>

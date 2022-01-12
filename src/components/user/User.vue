@@ -5,7 +5,7 @@ import Spinner from "../spinner/Spinner";
 
 export default {
   name: "User",
-  props: ['data'],
+  props: ['data', 'trendsLoad'],
   components: {
     Spinner
   }

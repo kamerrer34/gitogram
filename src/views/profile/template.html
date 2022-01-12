@@ -5,6 +5,7 @@
             <div class="profile__side">
                 <h2 class="profile__title">My profile</h2>
                 <ProfileInfo :data="getUserData(user)"
+                             :userLoad="userLoad"
                              :followingShow="followingShow"
                              @onFollowing="toggleFollowing()"
                 ></ProfileInfo>
@@ -32,7 +33,7 @@
                         <div class="profile__count">{{ user?.public_repos }}</div>
                     </div>
                     <div class="profile__list">
-                        <template v-if="!repos">
+                        <template v-if="reposLoad">
                             <Skeleton v-for="n in user?.public_repos" :type="'big'" class="skeleton__repo"></Skeleton>
                         </template>
                         <Repository v-for="repo in repos"

@@ -4,7 +4,8 @@ export default {
     namespaced: true,
     state: {
         trends: {
-            data: []
+            data: [],
+            load: false
         }
     },
     mutations: {
@@ -27,6 +28,9 @@ export default {
                 return repo;
             })
         },
+        SET_TRENDS_LOAD: (state, payload) => {
+            state.load = payload.load;
+        },
         SET_FOLLOW_LOAD: (state, payload) => {
             state.data = state.data.map(repo => {
                 if (payload.id === repo.id) {
@@ -43,12 +47,16 @@ export default {
     },
     actions: {
         async fetchTrends({ commit }) {
+            commit('SET_TRENDS_LOAD', { load: true });
             try {
                 const { data } = await api.trends.getTrends();
                 commit('SET_TRENDS', data.items);
+                commit('SET_TRENDS_LOAD', { load: false });
             } catch (err) {
                 console.error(err);
                 throw err;
+            } finally {
+                commit('SET_TRENDS_LOAD', { load: false });
             }
         },
         async fetchReadme({ commit, getters }, { id, owner, repo }) {

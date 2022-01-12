@@ -1,7 +1,6 @@
 <template src="./template.html"></template>
 
 <script>
-
 import ProfileInfo from "../../components/profile-info/ProfileInfo";
 import Repository from "../../components/repository/Repository";
 import Following from "../../components/following/Following";
@@ -21,13 +20,15 @@ export default {
   },
   data() {
     return {
-      followingShow: false,
+      followingShow: false
     }
   },
   computed: {
     ...mapState({
       user: state => state.user.data,
+      userLoad: state => state.user.load,
       repos: state => state.repos.data,
+      reposLoad: state => state.repos.load,
       following: state => state.following.data,
     }),
   },

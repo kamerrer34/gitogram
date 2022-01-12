@@ -6,7 +6,7 @@ import Skeleton from "../skeleton/Skeleton";
 
 export default {
   name: "ProfileInfo",
-  props: ['data', 'followingShow'],
+  props: ['data', 'userLoad', 'followingShow'],
   emits: ['onFollowing'],
   components: {
     Spinner,

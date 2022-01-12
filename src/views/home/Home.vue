@@ -17,6 +17,7 @@ export default {
   computed: {
     ...mapState({
       trends: state => state.trends.data,
+      trendsLoad: state => state.trends.load,
       starred: state => state.starred.data,
     }),
   },

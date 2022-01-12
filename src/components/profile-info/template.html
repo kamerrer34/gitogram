@@ -1,21 +1,21 @@
 <div class="profile-info">
     <div class="profile-info__pic">
-        <img v-if="data?.avatar" :src="data?.avatar" width="90" height="90" alt="avatar">
-        <Spinner v-else class="small"></Spinner>
+        <Spinner v-if="userLoad" class="small"></Spinner>
+        <img v-else :src="data.avatar" width="90" height="90" alt="avatar">
     </div>
     <div class="profile-info__inner">
-        <template v-if="data?.login">
-            <div class="profile-info__name">{{ data?.login }}</div>
+        <Skeleton v-if="userLoad" :type="'profile'"></Skeleton>
+        <template v-else>
+            <div class="profile-info__name">{{ data.login }}</div>
             <div class="profile-info__row">
-                <div class="profile-info__count">{{ data?.repos }}</div>
+                <div class="profile-info__count">{{ data.repos }}</div>
                 <div v-if="followingShow" class="profile-info__link" @click="$emit('onFollowing')">repos</div>
                 <div v-else class="profile-info__txt">repos</div>
-                <div class="profile-info__count">{{ data?.following}}</div>
+                <div class="profile-info__count">{{ data.following}}</div>
                 <div v-if="followingShow" class="profile-info__txt">watchers</div>
                 <div v-else class="profile-info__link" @click="$emit('onFollowing')">watchers</div>
             </div>
-            <div class="profile-info__capt">{{ data?.name }}</div>
+            <div class="profile-info__capt">{{ data.name }}</div>
         </template>
-        <Skeleton v-else :type="'profile'"></Skeleton>
     </div>
 </div>
