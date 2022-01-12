@@ -1,0 +1,10 @@
+@import './src/assets/scss/reset';
+@import './src/assets/scss/main';
+
+.sb-show-main.sb-main-padded {
+    padding: 50px;
+}
+
+#root {
+    position: relative;
+}

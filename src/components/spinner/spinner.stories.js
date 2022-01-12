@@ -1,19 +1,34 @@
-import spinner from "./Spinner";
+import Spinner from "./Spinner";
 
 export default {
-    title: 'spinner',
-    components: { spinner }
+    title: 'Spinner',
+    components: { Spinner }
 }
 
 export const defaultView = () => ({
     components: {
-        spinner
+        Spinner
     },
     template: `
       <Spinner></Spinner>
     `
 })
 
+export const smallView = () => ({
+    components: {
+        Spinner
+    },
+    template: `
+      <button class="g-button">
+        <Spinner class="small"></Spinner>
+      </button>
+    `
+})
+
 defaultView.story = {
-    name: 'Стандартный вид'
+    name: 'Стандартный'
+}
+
+smallView.story = {
+    name: 'Для кнопки'
 }
